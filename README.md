@@ -7,9 +7,10 @@ Using:
 - Composer - https://getcomposer.org/
 - Require `php-tmdb/api` package - https://github.com/php-tmdb/api
 
-`cd api`
-`composer install`
-
+```
+cd api
+composer install
+```
 
 ## APP
 Using:
