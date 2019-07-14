@@ -16,6 +16,8 @@ Using:
 - Create React App - https://github.com/facebook/create-react-app
 - Node-sass - https://github.com/sass/node-sass
 
-`cd app`
-`yarn install`
-`yarn start`
+```
+cd app
+yarn install
+yarn start
+```
