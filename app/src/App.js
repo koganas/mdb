@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import MovieList from './components/movieList'
+import axios from 'axios'
+
+
+class App extends Component {
+
+	constructor(props) {
+		super(props)      
+		this.state = {
+			list: this.getUpcomingMovies(),
+		}
+	}
+
+	getUpcomingMovies() {
+		axios.get('http://localhost/mdb/api/')
+			.then( res => {
+				const movies = res.data;
+				this.setState({
+					list: movies
+				})
+			})
+			.catch( err => {
+				console.log('No movies found');
+				return null;
+			})
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<MovieList movies={this.state.list} />
+			</div>
+		)
+	}
 }
 
 export default App;
