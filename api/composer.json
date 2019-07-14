@@ -1,0 +1,15 @@
+{
+    "name": "koganas/mdb",
+    "description": "Movie Database Api project",
+    "type": "project",
+    "require": {
+        "php-tmdb/api": "^2.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Koganas",
+            "email": "danielsank@gmail.com"
+        }
+    ]
+}
