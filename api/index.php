@@ -17,7 +17,19 @@ function get_all_upcoming() {
 	}
 	$movies = array_merge(...$pages);
 
+	/* Convert genre ids to names using get_genre() */
+	foreach ($movies as $key => $movie ) {
+		$genres = array_map('get_genre', $movies[$key]['genre_ids']);
+		$movies[$key]['genre_ids'] = $genres;
+	}
+
 	return $movies;
+}
+
+function get_genre($id) {
+	global $client;
+	$int = (int)$id;
+	return $client->getGenresApi()->getGenre($int)['name'];
 }
 
 
