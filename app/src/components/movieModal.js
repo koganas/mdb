@@ -4,7 +4,7 @@ class MovieModal extends Component {
 
     render() {
         return (
-            <div className={'modal ' + this.props.display} >
+            <div className={this.props.display ? 'modal modal--open' : 'modal'} >
             	<img src={'http://image.tmdb.org/t/p/w342' + this.props.movie.poster_path} alt="" />
                 <h1>{this.props.movie.title}</h1>
                 <p>{this.props.movie.overview}</p>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MovieLink from './movieLink'
+import MovieCard from './movieCard'
 
 class MovieList extends Component {
 
@@ -31,9 +31,8 @@ class MovieList extends Component {
                             this.props.movies.filter(movie =>
                                 movie.title.toLowerCase().includes(this.state.search.toLowerCase())
                             ).map(
-                                (movie, index) => { return <MovieLink movie={movie} key={index} /> }
+                                (movie, index) => { return <MovieCard movie={movie} key={index} /> }
                             )
-
                         }
                     </ul>
                 ) :
