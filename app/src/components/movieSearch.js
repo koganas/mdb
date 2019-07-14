@@ -19,25 +19,19 @@ class MovieList extends Component {
         })
     }
 
-    closeModal(e) {
-        //e.target.parentNode.parentNode.querySelectorAll('.modal')
-        // e.target.parentNode.parentNode.querySelectorAll('.modal--open').forEach((elm)=> {
-        //     elm.classList.remove('modal--open')
-        // })
-
+    toggleModal(e) {
         this.setState({
             isSelected: !this.state.isSelected
         })
     }
 
-    toggleModal(e, index) {
+    showModal(e, index) {
         e.preventDefault()
-        
+
         this.setState({
             isSelected: true,
             modalMovie: this.props.movies[index]
         })
-
     }
 
     render() {
@@ -51,13 +45,13 @@ class MovieList extends Component {
                 />
 
                 {this.props.movies ? (
-                    <div>
-                        <ul className="list">
+                    <div className="row">
+                        <ul className={this.state.isSelected ? 'list col-6' : 'list col-10'} >
                             {
                                 this.props.movies.filter(movie =>
                                     movie.title.toLowerCase().includes(this.state.search.toLowerCase())
                                 ).map(
-                                    (movie, index) => { return <MovieCard movie={movie} key={index} onClick={(e)=>this.toggleModal(e, index)} /> }
+                                    (movie, index) => { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, index)} /> }
                                 )
                             }
                         </ul>

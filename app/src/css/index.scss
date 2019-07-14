@@ -25,20 +25,43 @@ ul {
 }
 
 .modal {
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 250ms ease-in;
+
 	&--open {
-		display: block;
+		visibility: visible;
+		opacity: 1;
 	}
 }
 
 .list {
 	display: flex;
 	flex-flow: row;
-	overflow: hidden;
+	flex-wrap: wrap;
+	justify-content: space-between;
 
 	&__item {
 		list-style: none;
 		padding: 0 0.6rem;
+		overflow: hidden;
+		max-width: 200px;
 	}
 
+}
+
+
+.row {
+	display: flex;
+
+	.col-4 {
+		width: 40%;
+	}
+	.col-6 {
+		width: 60%;
+	}
+
+	.col-10 {
+		width: 100%;
+	}
 }
