@@ -10,9 +10,9 @@ class MovieList extends Component {
         }
     }
 
-    updateSearch(evt) {
+    updateSearch(e) {
         this.setState({
-            search: evt.target.value
+            search: e.target.value
         })
     }
 
@@ -33,13 +33,13 @@ class MovieList extends Component {
                             ).map(
                                 (movie, index) => { return <MovieLink movie={movie} key={index} /> }
                             )
+
                         }
                     </ul>
                 ) :
                     (
                     <p>Try searching for a movie</p>
                 )}
-
             </div>
         )
 
