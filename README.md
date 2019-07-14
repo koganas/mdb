@@ -1,5 +1,5 @@
 # React App + Tmdb
-Search upcoming movies webapp using The Movie Database API
+Search upcoming movies webapp using The Movie Database API v3
 
 # API
 Using:
