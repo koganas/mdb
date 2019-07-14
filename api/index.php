@@ -2,19 +2,27 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-/*
-Client Auth
-Construct the client
-*/
+/* Client Auth */
 $token  = new \Tmdb\ApiToken('1f54bd990f1cdfb230adb312546d765d');
 $client = new \Tmdb\Client($token, ['secure' => false]);
 
 /* API Functions */
+function get_all_upcoming() {
+	global $client;
 
-/* Test API call of upcoming movies, merging the first 3 pages */
-$list1 = $client->getMoviesApi()->getUpcoming(array('page' => 1))['results'];
-$list2 = $client->getMoviesApi()->getUpcoming(array('page' => 2))['results'];
-$list3 = $client->getMoviesApi()->getUpcoming(array('page' => 3))['results'];
-$movies = array_merge($list1, $list2, $list3);
+	/* Get total pages and merge arrays */
+	$totalPages = $client->getMoviesApi()->getUpcoming()['total_pages'];
+	for ($i=1; $i<=(int)$totalPages; $i++) {
+		$pages[$i] = $client->getMoviesApi()->getUpcoming(array('page' => $i))['results'];
+	}
+	$movies = array_merge(...$pages);
 
-print_r($movies);
+	return $movies;
+}
+
+
+/* Return API */
+$movies = get_all_upcoming();
+
+header('Content-Type: application/json');
+echo json_encode($movies);
