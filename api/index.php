@@ -37,5 +37,5 @@ function get_genre($id) {
 $movies = get_all_upcoming();
 
 header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Origin: *');
 echo json_encode($movies);

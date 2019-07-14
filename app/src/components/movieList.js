@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import MovieLink from './movieLink'
-import '../index.scss'
 
 class MovieList extends Component {
 
@@ -27,7 +26,7 @@ class MovieList extends Component {
                 />
 
                 {this.props.movies ? (
-                    <ul>
+                    <ul className="list">
                         {
                             this.props.movies.filter(movie =>
                                 movie.title.toLowerCase().includes(this.state.search.toLowerCase())

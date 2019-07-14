@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import './App.css'
-
 import MovieList from './components/movieList'
 import axios from 'axios'
 
-
 class App extends Component {
 
-	constructor(props) {
-		super(props)      
+	constructor() {
+		super()
 		this.state = {
 			list: this.getUpcomingMovies()
 		}
@@ -30,9 +27,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<MovieList movies={this.state.list} />
-			</div>
+			<MovieList movies={this.state.list} />
 		)
 	}
 }
