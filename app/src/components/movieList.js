@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Movie from './movie'
+import MovieLink from './movieLink'
 import '../index.scss'
 
 class MovieList extends Component {
@@ -19,7 +19,7 @@ class MovieList extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <input type="text"
                     placeholder="Search"
                     value={this.state.search}
@@ -32,7 +32,7 @@ class MovieList extends Component {
                             this.props.movies.filter(movie =>
                                 movie.title.toLowerCase().includes(this.state.search.toLowerCase())
                             ).map(
-                                (movie, index) => { return <Movie movie={movie} key={index} /> }
+                                (movie, index) => { return <MovieLink movie={movie} key={index} /> }
                             )
                         }
                     </ul>
