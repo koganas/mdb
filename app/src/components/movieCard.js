@@ -13,7 +13,7 @@ class MovieLink extends Component {
                        <img src="https://via.placeholder.com/200x300.jpg" alt="" />
                     )
                 }
-                <h1>{movie.title}</h1>
+                <h1 className="list__title">{movie.title}</h1>
             </li>
         )
     }

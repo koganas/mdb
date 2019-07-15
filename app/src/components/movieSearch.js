@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MovieCard from './movieCard'
 import MovieModal from './movieModal'
+import tmdbLogo from '../assets/themoviedb.svg'
 
 class MovieList extends Component {
 
@@ -56,22 +57,20 @@ class MovieList extends Component {
         return (
             <div className="container">
 
-                <input type="text"
-                    placeholder="Search"
-                    value={this.state.search}
-                    onChange={this.updateSearch.bind(this)}
-                />
+                <header className="header">
+                    <input type="text"
+                        className="input__search"
+                        placeholder="Search for a movie"
+                        value={this.state.search}
+                        onChange={this.updateSearch.bind(this)}
+                    />
+                    <img src={tmdbLogo} className="header__logo" alt="logo" />
+                </header>
 
                 {movies ? (
                     <div className="row">
                         <ul className={this.state.alreadyOpened ? 'list col-6' : 'list col-10'} >
-                            {
-                                filteredMovies.length
-                                ?
-                                    filteredMovies
-                                :
-                                    <p>No movies found</p>
-                            }
+                            { filteredMovies.length ? filteredMovies : <p>No movies found</p> }
                         </ul>
                         {
                             this.state.alreadyOpened ? (
