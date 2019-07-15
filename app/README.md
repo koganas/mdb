@@ -6,6 +6,7 @@ Packages:
 - Create React App - https://github.com/facebook/create-react-app
 - Node-sass - https://github.com/sass/node-sass
 - Axios - https://github.com/axios/axios
+- Moment.js - https://momentjs.com/
 
 ```
 yarn install
