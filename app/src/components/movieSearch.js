@@ -9,6 +9,7 @@ class MovieList extends Component {
         this.state = {
             search: '',
             isSelected: false,
+            alreadyOpened: false,
             modalMovie: ''
         }
     }
@@ -21,17 +22,26 @@ class MovieList extends Component {
 
     toggleModal(e) {
         this.setState({
-            isSelected: !this.state.isSelected
+            isSelected: !this.state.isSelected,
+            alreadyOpened: !this.state.alreadyOpened
         })
     }
 
-    showModal(e, index) {
+    showModal(e, movie) {
         e.preventDefault()
-
         this.setState({
-            isSelected: true,
-            modalMovie: this.props.movies[index]
+            isSelected: false,
+            alreadyOpened: true
         })
+        setTimeout(
+            ()=> {
+                this.setState({
+                    isSelected: true,
+                    modalMovie: movie
+                })
+            },
+            300
+        )
     }
 
     render() {
@@ -46,22 +56,26 @@ class MovieList extends Component {
 
                 {this.props.movies ? (
                     <div className="row">
-                        <ul className={this.state.isSelected ? 'list col-6' : 'list col-10'} >
+                        <ul className={this.state.alreadyOpened ? 'list col-6' : 'list col-10'} >
                             {
                                 this.props.movies.filter(movie =>
                                     movie.title.toLowerCase().includes(this.state.search.toLowerCase())
                                 ).map(
-                                    (movie, index) => { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, index)} /> }
+                                    (movie, index) => { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, movie)} /> }
                                 )
                             }
                         </ul>
-                        <MovieModal
-                            movie={this.state.modalMovie}
-                            display={this.state.isSelected}
-                        />
+                        {
+                            this.state.alreadyOpened ? (
+                                <MovieModal
+                                    display={this.state.isSelected}
+                                    movie={this.state.modalMovie}
+                                    onClick={(e)=>this.toggleModal(e)}
+                                /> )
+                            : ''
+                        }
                     </div>
-                ) :
-                    (
+                ) : (
                     <p>Try searching for a movie</p>
                 )}
 
