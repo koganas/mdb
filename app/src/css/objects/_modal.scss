@@ -1,0 +1,32 @@
+.modal {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity $time $cubic;
+	padding-top: calc( #{$topHeight} + 40px );
+	background-color: #ccc;
+    
+	&--open {
+		visibility: visible;
+		opacity: 1;
+
+		&.col-4 {
+			visibility: visible;
+		}
+	}
+
+	@media(--md) {
+		width: 100%;
+	}
+	
+	&__container {
+		position: fixed;
+		width: inherit;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+		width: inherit;
+		padding: 0 5rem;
+	}
+
+}

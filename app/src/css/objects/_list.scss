@@ -1,0 +1,17 @@
+.list {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding-top: calc( #{$topHeight} + 40px );
+    transition: width $time $cubic;
+    justify-content: center;
+
+    &__item {
+        list-style: none;
+        padding: 0 1rem;
+        overflow: hidden;
+        width: 200px;
+        cursor: pointer;
+    }
+
+}
