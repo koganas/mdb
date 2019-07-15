@@ -22,14 +22,15 @@ ul {
 }
 
 .container {
-	max-width: 90%;
+	max-width: 100%;
 	overflow: hidden;
-	margin: 0 auto;
 	text-align: center;
 }
 
 .row {
 	display: flex;
+	max-width: 90%;
+	margin: 0 auto;
 
 	.col-4 {
 		width: 40%;

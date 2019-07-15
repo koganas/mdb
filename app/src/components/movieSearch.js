@@ -45,6 +45,13 @@ class MovieList extends Component {
     }
 
     render() {
+        const {movies} = this.props
+        let filteredMovies = movies ? movies.filter(movie =>
+            movie.title.toLowerCase().includes(this.state.search.toLowerCase())
+        ).map((movie, index) =>
+            { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, movie)} /> }
+        ) : ''
+
         return (
             <div className="container">
 
@@ -54,15 +61,15 @@ class MovieList extends Component {
                     onChange={this.updateSearch.bind(this)}
                 />
 
-                {this.props.movies ? (
+                {movies ? (
                     <div className="row">
                         <ul className={this.state.alreadyOpened ? 'list col-6' : 'list col-10'} >
                             {
-                                this.props.movies.filter(movie =>
-                                    movie.title.toLowerCase().includes(this.state.search.toLowerCase())
-                                ).map(
-                                    (movie, index) => { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, movie)} /> }
-                                )
+                                filteredMovies.length
+                                ?
+                                    filteredMovies
+                                :
+                                    <p>No movies found</p>
                             }
                         </ul>
                         {
