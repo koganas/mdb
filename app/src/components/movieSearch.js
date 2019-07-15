@@ -46,7 +46,8 @@ class MovieList extends Component {
 
     render() {
         const {movies} = this.props
-        let filteredMovies = movies ? movies.filter(movie =>
+        let filteredMovies = movies ? movies
+        .filter(movie =>
             movie.title.toLowerCase().includes(this.state.search.toLowerCase())
         ).map((movie, index) =>
             { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, movie)} /> }

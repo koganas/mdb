@@ -1,24 +1,31 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 class MovieModal extends Component {
 
     render() {
+        const { movie, onClick, display } = this.props
+        let release_date = moment(movie.release_date).format('MMMM DD')
+        let genres = movie.genre_ids ? movie.genre_ids.map((genre) => <li>{genre}</li> ) : ''
+
         return (
-            <div className={this.props.display ? 'modal modal--open col-4' : 'modal'} >
+            <div className={display ? 'modal modal--open col-4' : 'modal'} >
                 <div className="modal__container">
-                    {this.props.movie.poster_path ?
+                    {movie.poster_path ?
                         (
-                	       <img src={'http://image.tmdb.org/t/p/w342' + this.props.movie.poster_path} alt="" />
+                	       <img src={'http://image.tmdb.org/t/p/w342' + movie.poster_path} alt="" />
                         ) : (
                            <img src="https://via.placeholder.com/342x513.jpg" alt="" />
                         )
                     }
-                    <h1>{this.props.movie.title}</h1>
-                    <p>{this.props.movie.overview}</p>
-                    {this.props.movie.genre_ids}
-                    {this.props.movie.release_date}
+                    <h1>{movie.title}</h1>
+                    <p>{movie.overview}</p>
 
-                    <button onClick={this.props.onClick}>Close</button>
+                    <ul>{genres}</ul>
+                    
+                    {release_date}
+
+                    <button onClick={onClick}>Close</button>
                 </div>
             </div>
         )
