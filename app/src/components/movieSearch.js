@@ -50,7 +50,10 @@ class MovieList extends Component {
         const { movies, loading } = this.props
         let filteredMovies = movies ? movies
         .filter(movie =>
-            movie.title.toLowerCase().includes(this.state.search.toLowerCase())
+            movie.title
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .includes(this.state.search.toLowerCase())
         ).map((movie, index) =>
             { return <MovieCard movie={movie} key={index} onClick={(e)=>this.showModal(e, movie)} /> }
         ) : ''
