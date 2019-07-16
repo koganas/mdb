@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 
 class MovieLink extends Component {
     render() {
-        const { movie, onClick } = this.props
+        const { movie, onClick, img } = this.props
         return (
             <li className="list__item" onClick={onClick} >
                 {movie.poster_path ?
                     (
-            	       <img src={'http://image.tmdb.org/t/p/w185' + movie.poster_path} alt="" />
+            	       <img src={img.base_url+img.poster_sizes[2]+movie.poster_path} alt={movie.title+' poster'} />
                     ) : (
                        <img src="https://via.placeholder.com/185x278.jpg" alt="" />
                     )

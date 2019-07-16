@@ -8,6 +8,7 @@ class App extends Component {
 		super()
 		this.state = {
 			list: this.getUpcomingMovies(),
+			imgSettings: this.getImgSettings(),
 			loading: true
 		}
 	}
@@ -27,9 +28,27 @@ class App extends Component {
 			})
 	}
 
+	getImgSettings() {
+		axios.get('http://localhost/mdb/api/img')
+			.then( res => {
+				const imgData = res.data;
+				this.setState({
+					imgSettings: imgData
+				})
+			})
+			.catch( err => {
+				console.log('No api config found');
+				return null;
+			})		
+	}
+
 	render() {
 		return (
-			<MovieSearch movies={this.state.list} loading={this.state.loading} />
+			<MovieSearch
+				movies={this.state.list}
+				img={this.state.imgSettings}
+				loading={this.state.loading}
+			/>
 		)
 	}
 }

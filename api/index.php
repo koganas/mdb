@@ -32,7 +32,6 @@ function get_genre($id) {
 	return $client->getGenresApi()->getGenre($int)['name'];
 }
 
-
 /* Return API */
 $movies = get_all_upcoming();
 
