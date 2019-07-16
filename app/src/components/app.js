@@ -7,7 +7,8 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			list: this.getUpcomingMovies()
+			list: this.getUpcomingMovies(),
+			loading: true
 		}
 	}
 
@@ -16,7 +17,8 @@ class App extends Component {
 			.then( res => {
 				const movies = res.data;
 				this.setState({
-					list: movies
+					list: movies,
+					loading: false
 				})
 			})
 			.catch( err => {
@@ -27,7 +29,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<MovieSearch movies={this.state.list} />
+			<MovieSearch movies={this.state.list} loading={this.state.loading} />
 		)
 	}
 }

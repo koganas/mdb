@@ -5,10 +5,11 @@
         background-color: transparent;
         padding: 1rem;
         color: $green;
-        font-size: 1.6rem;
         width: 350px;
         color: $white;
         margin-right: 1rem;
+        font-family: $rubik;
+        font-size: 1.6rem;
 
         &:focus {
         	background-color: $greenDark;

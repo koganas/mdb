@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MovieCard from './movieCard'
 import MovieModal from './movieModal'
+import Loading from './loading'
 import tmdbLogo from '../assets/themoviedb.svg'
 
 class MovieList extends Component {
@@ -46,7 +47,7 @@ class MovieList extends Component {
     }
 
     render() {
-        const {movies} = this.props
+        const { movies, loading } = this.props
         let filteredMovies = movies ? movies
         .filter(movie =>
             movie.title.toLowerCase().includes(this.state.search.toLowerCase())
@@ -67,10 +68,14 @@ class MovieList extends Component {
                     <img src={tmdbLogo} className="header__logo" alt="logo" />
                 </header>
 
-                {movies ? (
+                {loading ? (
+                    <div className="row">
+                        <Loading />
+                    </div>
+                ) : (
                     <div className="row">
                         <ul className={this.state.alreadyOpened ? 'list col-6' : 'list col-10'} >
-                            { filteredMovies.length ? filteredMovies : <p>No movies found</p> }
+                            { filteredMovies.length ? filteredMovies : <p>No movies found. Try searching again.</p> }
                         </ul>
                         {
                             this.state.alreadyOpened ? (
@@ -82,8 +87,6 @@ class MovieList extends Component {
                             : ''
                         }
                     </div>
-                ) : (
-                    <p>Try searching for a movie</p>
                 )}
 
             </div>
