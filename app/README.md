@@ -1,5 +1,5 @@
 # TMDB React App
-This app is consuming The Movie Database API v3 using a custom API
+This app is consuming a custom API based on The Movie Database API v3. The custom API returns the complete upcoming movies list and details and can be filtered using a search input.
 
 ## APP
 Packages:
@@ -13,5 +13,4 @@ Packages:
 yarn install
 yarn start
 ```
-
 Server will run at localhost:3000
