@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import MovieSearch from './movieSearch'
 import axios from 'axios'
 
+const baseUrl = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? 'http://localhost/mdb/api/' : 'http://koganas.com/tmdb/api/'
+
 class App extends Component {
 
 	constructor() {
@@ -9,12 +11,12 @@ class App extends Component {
 		this.state = {
 			list: this.getUpcomingMovies(),
 			imgSettings: this.getImgSettings(),
-			loading: true
+			loading: true			
 		}
 	}
 
 	getUpcomingMovies() {
-		axios.get('http://localhost/mdb/api/')
+		axios.get(baseUrl)
 			.then( res => {
 				const movies = res.data;
 				this.setState({
@@ -29,7 +31,7 @@ class App extends Component {
 	}
 
 	getImgSettings() {
-		axios.get('http://localhost/mdb/api/img')
+		axios.get(baseUrl+'img/')
 			.then( res => {
 				const imgData = res.data;
 				this.setState({
