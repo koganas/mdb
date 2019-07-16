@@ -1,4 +1,4 @@
-# React App + Tmdb
+# React App + TMDB API
 Search upcoming movies webapp using The Movie Database API v3.
 The `master` branch contains the boilerplate files and the packages used initially.
 
