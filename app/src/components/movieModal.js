@@ -21,7 +21,7 @@ class MovieModal extends Component {
                     }
                     <h1>{movie.title}</h1>
                     <h2>Release date: {release_date}</h2>
-                    <ul>{genres}</ul>
+                    <span><ul>{genres}</ul></span>
                     <p>{movie.overview}</p>
                     <FontAwesomeIcon
                         icon={faTimes}

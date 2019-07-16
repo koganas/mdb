@@ -59,8 +59,8 @@
 	}
 
 	&__close {
-		position: absolute;
-		top: 0;
+		position: fixed;
+		top: 12rem;
 		right: 5rem;
 		cursor: pointer;
 		font-size: 3rem;

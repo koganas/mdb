@@ -37,7 +37,7 @@ class App extends Component {
 				})
 			})
 			.catch( err => {
-				console.log('No api config found');
+				console.log('No API config found');
 				return null;
 			})		
 	}
